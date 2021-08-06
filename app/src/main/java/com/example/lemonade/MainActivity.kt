@@ -127,14 +127,29 @@ class MainActivity : AppCompatActivity() {
      */
     private fun setViewElements() {
         val textAction: TextView = findViewById(R.id.text_action)
-        // TODO: set up a conditional that tracks the lemonadeState
 
-        // TODO: for each state, the textAction TextView should be set to the corresponding string from
-        //  the string resources file. The strings are named to match the state
-
-        // TODO: Additionally, for each state, the lemonImage should be set to the corresponding
-        //  drawable from the drawable resources. The drawables have the same names as the strings
-        //  but remember that they are drawables, not strings.
+        when (lemonadeState) {
+            SELECT -> {
+                textAction.text = getString(R.string.lemon_select)
+                lemonImage?.setImageResource(R.drawable.lemon_tree)
+                lemonImage?.contentDescription = getString(R.string.lemon_image_select_description)
+            }
+            SQUEEZE -> {
+                textAction.text = getString(R.string.lemon_squeeze)
+                lemonImage?.setImageResource(R.drawable.lemon_squeeze)
+                lemonImage?.contentDescription = getString(R.string.lemon_image_squeeze_description)
+            }
+            DRINK -> {
+                textAction.text = getString(R.string.lemon_drink)
+                lemonImage?.setImageResource(R.drawable.lemon_drink)
+                lemonImage?.contentDescription = getString(R.string.lemon_image_drink_description)
+            }
+            RESTART -> {
+                textAction.text = getString(R.string.lemon_empty_glass)
+                lemonImage?.setImageResource(R.drawable.lemon_restart)
+                lemonImage?.contentDescription = getString(R.string.lemon_image_restart_description)
+            }
+        }
     }
 
     /**
